@@ -19,6 +19,8 @@ find . -name ".DS_Store" -type f -delete
 
 docker stop $(docker ps -a -q)
 
+docker network ls
+
 
 Filamen
 https://www.youtube.com/watch?v=Mv6kEFXOltA&ab_channel=CreativeAcademyIndonesia
