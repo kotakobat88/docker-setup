@@ -1,0 +1,44 @@
+services:
+  mysql_laravel:
+    image: mariadb:latest
+    container_name: mysql_laravel
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33306:3306"
+    volumes:
+      - ./database/data:/var/lib/mysql
+      - ./database/conf.d:/etc/mysql/conf.d:ro
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+      TZ: Asia/Jakarta
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    read_only: false
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8001:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql_laravel
+      - PMA_PORT=3306
+    depends_on:
+      - mysql_laravel
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
