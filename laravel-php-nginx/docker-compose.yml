@@ -1,24 +1,28 @@
-version: '3.9'
-
+version: '3.7'
 services:
-  php_laravel:
+  php_docker:
     build:
       context: ./php
-      dockerfile: Dockerfile  # Perbaiki nama file, gunakan huruf besar "D"
-    container_name: php_laravel
+      dockerfile: Dockerfile
+    container_name: php_docker
     hostname: "php"
     volumes:
       - ./src:/var/www/html
       - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
     working_dir: /var/www/html
+    environment:
+      DB_HOST: mysql_docker
+      DB_DATABASE: clover
+      DB_USER: root
+      DB_PASSWORD: 123456
     networks:
       - app-network
 
-  nginx_laravel:
+  nginx_docker:
     build:
       context: ./nginx
-      dockerfile: Dockerfile  # Sama, pastikan huruf besar "D"
-    container_name: nginx_laravel
+      dockerfile: Dockerfile
+    container_name: nginx_docker
     hostname: "nginx"
     ports:
       - "80:80"
@@ -26,7 +30,7 @@ services:
       - ./src:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - php_laravel  # Pastikan PHP berjalan sebelum Nginx
+      - php_docker
     networks:
       - app-network
 
