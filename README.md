@@ -44,6 +44,16 @@ docker stop $(docker ps -a -q)
 docker network connect database_app-network php_docker
 ```
 
+* .env
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql_docker
+DB_PORT=3306
+DB_DATABASE=clover
+DB_USERNAME=root
+DB_PASSWORD=123456
+```
+
 > **Note**
 > yang dijalankan `database dan phpmyadmin` dahulu dalam `folder database`
 > lalu `laravel-php-nginx` di run dengan langkah-langkah yang sama
