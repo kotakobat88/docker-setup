@@ -9,33 +9,39 @@
 
 From your command line:
 
+* Docker Compose Build
 ```bash
-# Docker Compose Build
-$ docker compose up -d —build
-
-# or use this
-$ docker compose up -d
-
-# Go into the repository
-$ cd namefolder
-
-# Down Docker
-$ docker compose down
+docker compose up -d —build
 ```
 
+* or use this
 ```bash
-# Menghapus .DS_Store
-$ find . -name ".DS_Store" -type f -delete
+docker compose up -d
 ```
 
+* Go into the repository
 ```bash
-# Shutdown Grup Container
-$ docker stop $(docker ps -a -q)
+cd namefolder
 ```
 
+* Down Docker
 ```bash
-# Mengkoneksikan kedua grup kontainer
-$ docker network connect database_app-network php_docker
+docker compose down
+```
+
+* Menghapus .DS_Store
+```bash
+find . -name ".DS_Store" -type f -delete
+```
+
+* Shutdown Grup Container
+```bash
+docker stop $(docker ps -a -q)
+```
+
+* Mengkoneksikan kedua grup kontainer
+```bash
+docker network connect database_app-network php_docker
 ```
 
 > **Note**
@@ -45,19 +51,19 @@ $ docker network connect database_app-network php_docker
 
 ## Tambahan untuk Laravel
 
+* digunakan klo php nya ggal dibuat php_laravel disesuaikan dengan mana imagenya
 ```bash
-# digunakan klo php nya ggal dibuat php_laravel disesuaikan dengan mana imagenya
-$ docker compose build php_laravel
+docker compose build php_laravel
 ```
 
+* masuk kedalam folder www
 ```bash
-# masuk kedalam folder www
-$ docker exec -it php_laravel bash
+docker exec -it php_laravel bash
 ```
 
+* install laravel terbaru
 ```bash
-# install laravel terbaru
-$ composer create-project laravel/laravel .
+composer create-project laravel/laravel .
 ```
 
 ```bash
