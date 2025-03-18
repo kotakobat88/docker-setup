@@ -51,14 +51,22 @@ docker network connect database_app-network php_docker
 
 ## Tambahan untuk Laravel
 
-* digunakan klo php nya ggal dibuat `php_laravel` disesuaikan dengan mana imagenya
+* digunakan klo php nya ggal dibuat `php_laravel` disesuaikan dengan mana imagenya contohnya `php_docker`
 ```bash
 docker compose build php_laravel
+```
+or
+```bash
+docker compose build php_docker
 ```
 
 * masuk kedalam folder www
 ```bash
 docker exec -it php_laravel bash
+```
+or
+```bash
+docker exec -it php_docker bash
 ```
 
 * install laravel terbaru
