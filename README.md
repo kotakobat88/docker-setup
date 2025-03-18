@@ -1,51 +1,68 @@
-# docker-setup
-Cara Setup Website dengan Docker
 
-docker network connect database_app-network php_docker
+<h1 align="center">
+  Docker Compose
+</h1>
 
-docker restart php_docker
+<h4 align="center">Belajar Docker Compose untuk Pemula</h4>
 
-docker compose up -d —build
+## How To Use
 
-docker compose up -d
+From your command line:
 
-docker exec -it php_docker bash
+```bash
+# Docker Compose Build
+$ docker compose up -d —build
 
-composer create-project laravel/laravel .
+# or use this
+$ docker compose up -d
 
-docker compose down
+# Go into the repository
+$ cd namefolder
 
-find . -name ".DS_Store" -type f -delete
+# Down Docker
+$ docker compose down
+```
 
-docker stop $(docker ps -a -q)
+```bash
+# Menghapus .DS_Store
+$ find . -name ".DS_Store" -type f -delete
+```
 
-docker network ls
+```bash
+# Shutdown Grup Container
+$ docker stop $(docker ps -a -q)
+```
 
+```bash
+# Mengkoneksikan kedua grup kontainer
+$ docker network connect database_app-network php_docker
+```
 
-Filamen
-https://www.youtube.com/watch?v=Mv6kEFXOltA&ab_channel=CreativeAcademyIndonesia
+> **Note**
+> yang dijalankan `database dan phpmyadmin` dahulu dalam `folder database`
+> lalu `laravel-php-nginx` di run dengan langkah-langkah yang sama
+---
 
-setingan laravel dengan docker (php + mysql + nginx)
-https://www.youtube.com/watch?v=qaYJ6Z1hJwA&ab_channel=arhanmcz
-https://github.com/arhan321/laravel/blob/main/php/docker-entrypoint.sh
+## Tambahan untuk Laravel
 
+```bash
+# digunakan klo php nya ggal dibuat php_laravel disesuaikan dengan mana imagenya
+$ docker compose build php_laravel
+```
 
-Docker Compose untuk FrankenPHP, MySQL, PhpMyAdmin Lengkap!!!
-https://www.youtube.com/watch?v=bR_wuOW2JA4&ab_channel=OrangIT
+```bash
+# masuk kedalam folder www
+$ docker exec -it php_laravel bash
+```
 
-Bikin Environment Development untuk FrankenPHP, Laravel dan PostgreSQL
-https://www.youtube.com/watch?v=KF_5bdYZeCE&list=PLUtZhRkcHCprWZokecC4J7lfHF2vPRvK_&index=12&ab_channel=OrangIT
+```bash
+# install laravel terbaru
+$ composer create-project laravel/laravel .
+```
 
-Setting Up MYSQL in a docker container (+ phpmyadmin)
-https://www.youtube.com/watch?v=BuAELkBFMh8&ab_channel=Andrewww&sttick=0
-
-whimsical
-https://whimsical.com/glomap-co-id-GNBVYBwQiduoznpXBrdddS
-lucidchart
-https://lucid.app/lucidchart/130fe962-b744-41b4-8c26-b0fe6a11c780/edit?beaconFlowId=EB3CFC30BA4BE9FE&page=0_0&invitationId=inv_8dd7454d-d314-4f2e-951f-e3d0b0b88fd1#
-
-Paket Dokumentasi API
-https://scribe.knuckles.wtf/laravel/
-
-How To Fix Support For Password Authentication Was Removed On GitHub
-https://www.youtube.com/watch?v=ePCBuIQJAUc
+```bash
+# tambahan
+chmod 777 -R storage/* (jika error storage)
+php artisan key:generate
+php artisan migrate
+```
