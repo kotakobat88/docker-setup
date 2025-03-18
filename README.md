@@ -43,7 +43,7 @@ docker stop $(docker ps -a -q)
 docker network ls
 ```
 
-![Network Preview](http://i.imgur.com/lgRe8z4.png)
+![Network Preview](hhttps://raw.githubusercontent.com/kotakobat88/docker-setup/refs/heads/main/image.png)
 
 Kalau benar ada dua network (`database_app-network` dan `php_docker`), kita bisa menghubungkan `php_docker` ke network yang berisi MySQL.
 dengan syarat di satu network yang sama
