@@ -38,6 +38,21 @@ find . -name ".DS_Store" -type f -delete
 ```bash
 docker stop $(docker ps -a -q)
 ```
+* Cek Network yang Ada
+```bash
+docker network ls
+```
+
+![Network Preview](http://i.imgur.com/lgRe8z4.png)
+
+Kalau benar ada dua network (`database_app-network` dan `php_docker`), kita bisa menghubungkan `php_docker` ke network yang berisi MySQL.
+dengan syarat di satu network yang sama
+```bash
+# Contoh
+networks:
+  app-network:
+    driver: bridge
+```
 
 * Mengkoneksikan kedua grup kontainer
 ```bash
