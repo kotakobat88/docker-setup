@@ -11,7 +11,7 @@ From your command line:
 
 * Docker Compose Build
 ```bash
-docker compose up -d —build
+docker compose up -d -—build
 ```
 
 * or use this
