@@ -69,6 +69,16 @@ DB_USERNAME=root
 DB_PASSWORD=123456
 ```
 
+Contoh:
+Menghapus jaringan dengan ID.
+```bash
+docker network rm 1234567890ab
+```
+Menghapus jaringan dengan nama.
+```bash
+docker network rm my_network
+```
+
 > **Note**
 > yang dijalankan `database dan phpmyadmin` dahulu dalam `folder database`
 > lalu `laravel-php-nginx` di run dengan langkah-langkah yang sama
