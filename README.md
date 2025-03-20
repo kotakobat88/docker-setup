@@ -38,6 +38,11 @@ find . -name ".DS_Store" -type f -delete
 ```bash
 docker stop $(docker ps -a -q)
 ```
+or
+untuk close grup container on windows
+```bash
+for /f "tokens=*" %i in ('docker ps -a -q') do docker stop %i
+```
 * Cek Network yang Ada
 ```bash
 docker network ls
